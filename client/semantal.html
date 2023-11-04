@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+<body><!-- Displays the remaining time on the screen-->
+    <p id="timer"></p>
+    <br>
+    <h1>Semantle</h1>
+
+    <br>
+    <input type="text" id="inputField" placeholder="guess" oninput="removePlaceholder()">
+    <button id="guessButton">to
+        check</button>
+    <p id="result"></p>
+    
+    <br>
+    <div id="userPoints">your points: </div>
+    <br>
+    <table id="resultsTable">
+        <tr>
+            <th>#</th>
+            <th>Guess</th>
+            <th>Similarity</th>
+
+        </tr>
+    </table>
+    <br>
+    <button id="instructionsBtn" onclick="showInstructions()">Instructions</button>
+    <div id="instructionsModal" class="modal">
+        <span class="close" onclick="closeInstructions()">&times;</span>
+        <div id="modalContent">
+        
+            <p  >
+                <span class="large-title"> Guess the secret word...</span>
+                
+                <!-- Your instructions here -->
+                <br>
+                Semantle will tell you how semantically similar it thinks your word is to the secret word.
+                When the user enters a (one) word, the semantic proximity is measured using the Word2vec model - two words will
+                be semantically close the more likely they are to be used in a similar context.
+                <br>
+                The collection of texts that forms the basis for understanding the context between the words (data) is Wikipedia.
+                The highest possible similarity is 100. This indicates that the words are the same and you have won.
+                <br>
+                At the beginning of the game, the user is required to register on the login page and enter a username and
+                password.
+                <br>
+                Throughout the game the user will be shown an instructions button where all the instructions and rules of our
+                game will be written.
+                <br>
+                In addition, when the game starts, a timer is activated, if the user guesses the word in the allotted time, he
+                earns a point.
+                <br>
+                At the end of the game, the user will be shown how long it took him to guess the drawn word and whether he broke
+                his record from the previous time, and it will also show how many points he has so far.
+                Every day a word is drawn at midnight according to the RANDOM WORD API model.
+            </p>
+        </div>
+    </div>
+    <br>
+    
+    <div class="image-container">
+        <img src="Semantle.png" alt="Semantle" class="semantle-image">
+    </div>
+
+
+
+  
+    <div class="overlay" id="overlay">
+        <img src="zikokim.gif" alt="Fireworks or Confetti" class="fireworks">
+    </div>
+    <br>
+    <div class="made_by"> Made by Thila Ankonina & Simcha Bijaoui 2023.</div>
+
+    <script> firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log('המשתמש מחובר:', user);
+            } else {
+                console.log('המשתמש לא מחובר');
+            }
+        });
+    </script>
+</body>
+
+</html>

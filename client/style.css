@@ -1,0 +1,315 @@
+
+:root {
+    direction: ltr;
+}
+
+
+body {
+    background: radial-gradient(circle, #f0f0f0 0%, #d4d2d2 80%);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0;
+    /* Reset default margin */
+    min-height: 100vh;
+}
+
+
+
+h1 {
+
+    display: inline-block;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #3399FF, #FF66CC, #FF3399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 3px 3px 5px rgba(128, 128, 128, 0.5);
+}
+
+
+
+
+#inputField {
+    font-family: cursive;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    /* Rounded corners */
+    margin-top: 10px;
+}
+
+button {
+    font-family: cursive;
+    padding: 10px 20px;
+    background-color: #e71690;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    /* Rounded corners */
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    /* Smooth transition */
+}
+
+/* Change color on hover */
+button:hover {
+    background-color: #3399;
+}
+
+/*
+.made_by {
+    font-family:cursive;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    padding: 20px;
+    position: fixed; 
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+
+}*/
+
+.made_by {
+    font-family: cursive;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-top: 1cm;
+    /* Add margin to move it down */
+    text-align: center;
+    /* Center align the text */
+    border: 2px solid white;
+    /* Add a white border around the text */
+    box-sizing: border-box;
+    /* Ensure the border is included in the element's total width and height */
+    display: inline-block; /* Add this to shrink-wrap the container around the text */
+    border-radius: 50px; /* Adjust the pixel value for the degree of rounding */
+}
+
+
+
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 178, 178, 0.733);
+}
+
+/*
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 50px;
+    max-width: 600px;
+    position: relative;
+}*/
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+
+#instructionsModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    /* Adjust the width as needed */
+    max-width: 600px;
+   /* background-color: rgb(255, 231, 235); /* Set the default background color to pink */
+    background: radial-gradient(circle, #f0f0f0 0%, rgb(255, 231, 235) 80%);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 50px; /* Adjust the pixel value for the degree of rounding */
+
+}
+
+#instructionsModal p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+
+
+/*
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 50px;
+    max-width: 600px;
+    position: relative;
+    text-align: center; 
+}
+
+
+
+
+*/
+
+
+
+/*
+#timer {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 5px 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }*/
+
+#timer {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 5px 10px;
+    box-shadow: 2px 2px 5px rgba(228, 224, 224, 0.3);
+    border: 2px solid rgba(175, 171, 171, 0.3);
+    /* Add border around the numbers */
+    display: inline-block;
+    /* Make the border wrap around the numbers */
+}
+
+
+
+
+
+#Instructions {
+    font-family: cursive;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#Instruct {
+    font-family: cursive;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    line-height: 1.6;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#resultsTable {
+    margin: 0 auto;
+    /* Center-align the table */
+    border-collapse: separate;
+    /* Use separate border model */
+    border-spacing: 35px;
+    /* Adjust the spacing value as needed */
+}
+
+
+
+
+.image-container {
+    position: absolute;
+    bottom: 10px;
+    /* Adjust this value to position the image vertically */
+    left: 10px;
+    /* Adjust this value to position the image horizontally */
+}
+
+/* Style for the image itself */
+.semantle-image {
+    max-width: 250px;
+    /* Adjust the maximum width of the image */
+}
+
+
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Semi-transparent black background */
+    z-index: 9999;
+    /* Make sure it's on top of everything */
+    text-align: center;
+}
+
+.fireworks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.large-title {
+    font-size: 30px;
+
+}
+
+
+/* Style for the "Points" element */
+#userPoints {
+    position: absolute;
+    top: 100px;
+    right: 100px; /* Adjust the right position as needed */
+    font-family: cursive; /* Use the same font as the page */
+    color: inherit; /* Use the same text color as the page */
+    font-size: inherit; /* Use the same font size as the page */
+}
+
+
+.background {
+    /*background-image: url('lose.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh; /* Make it cover the entire viewport height */
+    opacity: 0.8; /* Adjust the transparency as needed */
+    position: relative;
+}

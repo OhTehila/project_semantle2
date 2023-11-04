@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Win</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+</head>
+
+<body>
+    <h1>You win! </h1>
+    <img src="win.PNG" alt="Lose Image">
+    <h1>See you tomorrow</h1>
+    <div id="userPoints">your points:
+        <p> <span id="userPoints">Loading...</span></p>
+      
+    </div>
+
+    <script>
+        // Your web app's Firebase configuration    
+        const firebaseConfig = {
+            apiKey: "AIzaSyBS6ftMzXuNYUVmBDytMQyV1nDfwiAIUG8",
+            authDomain: "semantle-9c71d.firebaseapp.com",
+            databaseURL: "https://semantle-9c71d-default-rtdb.firebaseio.com",
+            projectId: "semantle-9c71d",
+            storageBucket: "semantle-9c71d.appspot.com",
+            messagingSenderId: "19586239469",
+            appId: "1:19586239469:web:e75eabcb59eb03c9f8f5e4",
+            measurementId: "G-Y0NBW3N14G"
+        };
+        // Initialize Firebase     
+        firebase.initializeApp(firebaseConfig);
+        const params = new URLSearchParams(window.location.search);
+        const time = params.get('time');
+        if (time !== null) {
+            // אם נמצא הפרמטר time ב-URL, הצג את הזמן        
+            // document.getElementById('userPoints').textContent = `Your Time: ${time} seconds \n Your Points: Loading...`;       
+            const userPointsDiv = document.getElementById('userPoints');
+            userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: Loading...</div>`;
+            // הוסף את הקוד הבא כדי לטעון את נקודות המשתמש מ-Firebase      
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    // המשתמש מחובר              
+                    console.log('המשתמש מחובר:', user);
+                    const uid = user.uid;
+                    const userRef = firebase.database().ref(`users/${uid}/points`);
+                    userRef.once('value', (snapshot) => {
+                        const userPoints = snapshot.val();
+                        if (userPoints !== undefined) {
+                            //  document.getElementById('userPoints').textContent = `Your Time: ${time} seconds \n Your Points: ${userPoints}`;         
+                            const userPointsDiv = document.getElementById('userPoints');
+                            userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: ${userPoints}</div>`;
+                        } else {
+                            console.error('User points not found.');
+                            document.getElementById('userPoints').textContent = 'Error: Points not found';
+                        }
+                    });
+                } else {
+                    // המשתמש לא מחובר           
+                    console.log('המשתמש לא מחובר');
+                    console.error('User not authenticated.');
+                    document.getElementById('userPoints').textContent = 'Error: User not authenticated';
+                }
+            });
+        } else {
+
+            // אם לא נמצא הפרמטר time, הצג הודעת שגיאה         
+            document.getElementById('userPoints').textContent = 'Error: Time not found';
+        }
+    </script>
+</body>
+</html>
