@@ -42,6 +42,7 @@
             // If the time parameter is found in the URL, display the time       
             const userPointsDiv = document.getElementById('userPoints');
             userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: Loading...</div>`;
+
             // to load the user points from Firebase     
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
@@ -53,7 +54,14 @@
                         const userPoints = snapshot.val();
                         if (userPoints !== undefined) {
                             const userPointsDiv = document.getElementById('userPoints');
-                            userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: ${userPoints}</div>`;
+                            if (time >= 60) {
+                                const minutes = Math.floor(time / 60);
+                                const seconds = time % 60;
+                                userPointsDiv.innerHTML = `<div>Your Time: ${minutes}  minutes ${seconds} seconds</div><div>Your Points: ${userPoints}</div>`;
+                            } else {
+                                userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: ${userPoints}</div>`;
+                            }
+                            // userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: ${userPoints}</div>`;
                         } else {
                             console.error('User points not found.');
                             document.getElementById('userPoints').textContent = 'Error: Points not found';
