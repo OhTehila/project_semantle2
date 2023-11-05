@@ -76,18 +76,19 @@ function calculateSemanticDistance(userWord, targetWord) {
 let correctWord;
 
 function getRandomWord() {
-    const getRandomWordFromApi = () => {
-        return axios.get('https://random-word-api.herokuapp.com/word?number=1')///שינוי
-            .then(response => response.json())
-            .then(data => {
-                const randomWord = data[0];
-                console.log('Random word from API:', randomWord);
-                return randomWord;
-            })
-            .catch(error => {
-                console.error('Error fetching random word:', error);
-                throw error;
-            });
+    const getRandomWordFromApi = async () => {
+        try {
+            const response = await axios.get('https://random-word-api.herokuapp.com/word?number=1')
+            // .then(response => response.json())
+            // .then(data => {
+            const randomWord = response.data[0];
+            console.log('Random word from API:', randomWord);
+            return randomWord;
+            //})
+        } catch (error) {
+            console.error('Error fetching random word:', error);
+            throw error;
+        }
     };
 
     const isValidWord = word => vectorsMap.has(word);
@@ -128,7 +129,7 @@ function scheduleRandomWord() {
 }
 
 // Start scheduling the function
-getRandomWord();////////שינוי
+getRandomWord();/// שנכנס מגריל
 scheduleRandomWord();
 
 app.post('/check-word', (req, res) => {
