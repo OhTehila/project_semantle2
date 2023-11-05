@@ -114,7 +114,7 @@ function getRandomWord() {
 function scheduleRandomWord() {
     const now = new Date();
     const targetTime = new Date(now);
-    targetTime.setHours(17, 11, 0, 0); // Set target time to 00:00
+    targetTime.setHours(0, 0, 0, 0); // Set target time to 0:0
     if (targetTime <= now) {
         targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
     }
@@ -128,6 +128,7 @@ function scheduleRandomWord() {
 }
 
 // Start scheduling the function
+getRandomWord();////////זה
 scheduleRandomWord();
 
 app.post('/check-word', (req, res) => {
