@@ -1,5 +1,4 @@
-
-// Your web app's Firebase configuration
+// web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBS6ftMzXuNYUVmBDytMQyV1nDfwiAIUG8",
     authDomain: "semantle-9c71d.firebaseapp.com",
@@ -36,17 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check the condition based on API response data
             if (Math.abs(data - 100) < 0.0000001 || Math.abs(data - 99.99999999999999) < 0.0000001) {
                 if (user) {
-                
-                   const overlay = document.getElementById('overlay');
+
+                    const overlay = document.getElementById('overlay');
                     overlay.style.display = 'block';
 
                     // Hide the overlay after a certain delay (e.g., 5 seconds)
                     setTimeout(() => {
                         overlay.style.display = 'none';
                     }, 1000000); // 5000 milliseconds = 5 seconds
-
-
-                    // setTimeout(() => {  }, 180000);
 
                     // If there is a user, retrieve their UID
                     const uid = user.uid;
@@ -72,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 console.log('User points updated successfully.');
                                 console.log(`Time taken to solve: ${timeSpent} seconds`);
                                 window.location.href = `end_game_win.html?time=${timeSpent}`;
-                              //  window.location.href = 'end_game_win.html';
                             } else {
                                 console.error('Transaction could not be committed.');
                             }
@@ -86,67 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-
-
-/*
-
-            if (Math.abs(data - 100) < 0.0000001 || Math.abs(data - 99.99999999999999) < 0.0000001) {
-                if (user) {
-                    const overlay = document.getElementById('overlay');
-                    overlay.style.display = 'block';
-            
-                    // Hide the overlay after a certain delay (e.g., 5 seconds)
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                    }, 5000); // 5000 milliseconds = 5 seconds
-            
-                    const uid = user.uid;
-                    const userPointsRef = firebase.database().ref(`users/${uid}/points`);
-            
-
-
-               
-                    
-                  
-
-                    userPointsRef.transaction((currentPoints) => {
-                        if (currentPoints === null) {
-                            return 3;
-                        }
-                        return currentPoints + 3;
-                    })
-                    .then((transactionResult) => {
-                        if (transactionResult.committed) {
-                            const updatedPoints = transactionResult.snapshot.val();
-
-                         
-                          const currentTime = Date.now();
-                            // Update the userPoints div with both points and time
-                            const userPointsDiv = document.getElementById('userPoints');
-                            userPointsDiv.innerHTML = `Your points: ${updatedPoints}<br>Your time: ${currentTime}`;
-
-                           
-
-                            console.log('User points updated successfully.');
-                            window.location.href = 'end_game_win.html';
-                        } else {
-                            console.error('Transaction could not be committed.');
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Transaction failed:', error);
-                    });
-                } else {
-                    console.error('User not authenticated.');
-                    document.getElementById('userPoints').textContent = 'Error';
-                }
-            }*/
-            
-
-
-
-
-
             resultElement.textContent = data.result;
             // Update the results table with the received answer          
             var newRow = resultsTable.insertRow(1);
@@ -156,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             wordCount++;
             numberCell.innerHTML = wordCount;
             inputCell.innerHTML = guessedWord;
-            //outcomeCell.innerHTML = data.result;         
             outcomeCell.innerHTML = data;
             // Clear the input field after displaying the answer           
             inputField.value = "";
@@ -165,34 +98,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-// זמן כולל במילישניות לטיימר (10 דקות)
-const totalTime = 20 * 60 * 1000;// זמן התחלה של הטיימר
+// Total time in milliseconds for the timer (20 minutes)
+const totalTime = 20 * 60 * 1000;//start time of the timer
 const startTime = Date.now();
-// פונקציה שמתעדכנת בכל שנייה ומציגה את הזמן הנותר
+// A function that updates every second and displays the remaining time
 function updateTimer() {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
-    const remainingTime = Math.max(totalTime - elapsedTime, 0);  // וודא שהזמן הנותר אינו שלילי
+    const remainingTime = Math.max(totalTime - elapsedTime, 0);  // Make sure the remaining time is not negative
     const minutes = Math.floor(remainingTime / (60 * 1000));
     const seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
     document.getElementById("timer").innerText = ` ${minutes}:${seconds}`;
-    // במידה והטיימר נגמר, מפעיל את הפונקציה המתאימה  
+    // If the timer runs out, activates the appropriate function 
     if (remainingTime <= 0) {
         timerExpired();
     }
 }
-// פונקציה שתופעל כאשר הטיימר מסתיים
+// A function that will be run when the timer ends
 function timerExpired() {
-    // כאן אתה יכול לבצע פעולות כאשר הטיימר מסתיים   
-    // alert("Time is up!");  
     window.location.href = 'end_game_los.html';
 }
-// פונקציה שמבצעת את העדכון הראשוני ופועלת את הטיימר
+// A function that performs the initial update and starts the timer
 function startTimer() {
     updateTimer();
-    setInterval(updateTimer, 1000); // מעדכן כל שנייה
+    setInterval(updateTimer, 1000); // updates every second
 }
-// הפעלת הטיימר בעת טעינת הדף
+// Starting the timer when the page loads
 window.onload = startTimer;
 function removePlaceholder() {
     var inputField = document.getElementById("inputField");
@@ -209,30 +140,29 @@ function closeInstructions() {
     modal.style.display = "none";
 }
 
-
-// כאשר הדף נטען
+// When the page loads
 document.addEventListener("DOMContentLoaded", function () {
-    // קבוע את אלמנט ה-HTML שבו תרצה להציג את הנקודות
+    // Set the HTML element where you want to display the dots
     const userPointsElement = document.getElementById('userPoints');
 
-    // כאשר המשתמש מתחבר
+    // When the user logs in
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            // אם המשתמש מחובר, קבל את הנקודות מ-Firebase
+            // If the user is logged in, get the points from Firebase
             const uid = user.uid;
             const userPointsRef = firebase.database().ref(`users/${uid}/points`);
 
             userPointsRef.on('value', (snapshot) => {
                 const userPoints = snapshot.val();
                 if (userPoints !== null) {
-                    // עדכן את אלמנט ה-HTML בערך של הנקודות
+                    // Update the HTML element with the points value
                     userPointsElement.textContent = `your points: ${userPoints}`;
                 } else {
                     console.error('User points not found.');
                 }
             });
         } else {
-            // אם המשתמש לא מחובר, ערך באלמנט ה-HTML לריק
+            // If the user is not logged in, set the HTML element to 0
             userPointsElement.textContent = 'your points: 0';
         }
     });

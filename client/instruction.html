@@ -10,16 +10,17 @@
 </head>
 
 <body>
-    <p id="Instruct" >
+    <p id="Instruct">
         <span class="large-title"> Guess the secret word...</span>
-        
-        <!-- Your instructions here -->
+
+        <!-- instructions here -->
         <br>
         Semantle will tell you how semantically similar it thinks your word is to the secret word.
         When the user enters a (one) word, the semantic proximity is measured using the Word2vec model - two words will
         be semantically close the more likely they are to be used in a similar context.
         <br>
-        The collection of texts that forms the basis for understanding the context between the words (data) is Wikipedia.
+        The collection of texts that forms the basis for understanding the context between the words (data) is
+        Wikipedia.
         The highest possible similarity is 100. This indicates that the words are the same and you have won.
         <br>
         At the beginning of the game, the user is required to register on the login page and enter a username and
@@ -35,7 +36,6 @@
         his record from the previous time, and it will also show how many points he has so far.
         Every day a word is drawn at midnight according to the RANDOM WORD API model.
     </p>
-    <script>// Your web app's Firebase configuration  const firebaseConfig = {    apiKey: "AIzaSyBS6ftMzXuNYUVmBDytMQyV1nDfwiAIUG8",    authDomain: "semantle-9c71d.firebaseapp.com",    databaseURL: "https://semantle-9c71d-default-rtdb.firebaseio.com",    projectId: "semantle-9c71d",    storageBucket: "semantle-9c71d.appspot.com",    messagingSenderId: "19586239469",    appId: "1:19586239469:web:e75eabcb59eb03c9f8f5e4",    measurementId: "G-Y0NBW3N14G"  };  // Initialize Firebase  firebase.initializeApp(firebaseConfig);        firebase.auth().onAuthStateChanged((user) => {            if (user) {                // המשתמש מחובר                console.log('המשתמש מחובר:', user);                // כאן תוכל להוסיף פעולות נוספות שתרצה לבצע כאשר המשתמש מחובר            } else {                // המשתמש לא מחובר                console.log('המשתמש לא מחובר');                // כאן תוכל להוסיף פעולות נוספות שתרצה לבצע כאשר המשתמש לא מחובר            }        });    </script>
     <br>
     <button><a href="semantal.html">I whant to play</a></button>
 </body>

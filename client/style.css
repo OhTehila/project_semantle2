@@ -1,8 +1,6 @@
-
 :root {
     direction: ltr;
 }
-
 
 body {
     background: radial-gradient(circle, #f0f0f0 0%, #d4d2d2 80%);
@@ -14,10 +12,7 @@ body {
     min-height: 100vh;
 }
 
-
-
 h1 {
-
     display: inline-block;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 70px;
@@ -29,9 +24,6 @@ h1 {
     color: transparent;
     text-shadow: 3px 3px 5px rgba(128, 128, 128, 0.5);
 }
-
-
-
 
 #inputField {
     font-family: cursive;
@@ -61,19 +53,6 @@ button:hover {
     background-color: #3399;
 }
 
-/*
-.made_by {
-    font-family:cursive;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50px;
-    padding: 20px;
-    position: fixed; 
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%);
-
-}*/
-
 .made_by {
     font-family: cursive;
     background-color: rgba(255, 255, 255, 0.8);
@@ -86,16 +65,11 @@ button:hover {
     /* Add a white border around the text */
     box-sizing: border-box;
     /* Ensure the border is included in the element's total width and height */
-    display: inline-block; /* Add this to shrink-wrap the container around the text */
-    border-radius: 50px; /* Adjust the pixel value for the degree of rounding */
+    display: inline-block;
+    /* Add this to shrink-wrap the container around the text */
+    border-radius: 50px;
+    /* Adjust the pixel value for the degree of rounding */
 }
-
-
-
-
-
-
-
 
 .modal {
     display: none;
@@ -108,17 +82,6 @@ button:hover {
     background-color: rgba(247, 178, 178, 0.733);
 }
 
-/*
-.modal-content {
-    background-color: #fefefe;
-    margin: 20% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 50px;
-    max-width: 600px;
-    position: relative;
-}*/
-
 .close {
     position: absolute;
     top: 10px;
@@ -126,7 +89,6 @@ button:hover {
     font-size: 50px;
     cursor: pointer;
 }
-
 
 #instructionsModal {
     display: none;
@@ -138,54 +100,19 @@ button:hover {
     width: 70%;
     /* Adjust the width as needed */
     max-width: 600px;
-   /* background-color: rgb(255, 231, 235); /* Set the default background color to pink */
     background: radial-gradient(circle, #f0f0f0 0%, rgb(255, 231, 235) 80%);
     padding: 20px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 50px; /* Adjust the pixel value for the degree of rounding */
-
+    border-radius: 50px;
+    /* Adjust the pixel value for the degree of rounding */
 }
 
 #instructionsModal p {
     line-height: 1.6;
     margin-bottom: 20px;
 }
-
-
-
-
-/*
-
-.modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 50px;
-    max-width: 600px;
-    position: relative;
-    text-align: center; 
-}
-
-
-
-
-*/
-
-
-
-/*
-#timer {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    padding: 5px 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }*/
 
 #timer {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -202,10 +129,6 @@ button:hover {
     /* Make the border wrap around the numbers */
 }
 
-
-
-
-
 #Instructions {
     font-family: cursive;
     font-size: 24px;
@@ -217,7 +140,6 @@ button:hover {
     max-width: 80%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
-
 
 #Instruct {
     font-family: cursive;
@@ -232,8 +154,6 @@ button:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-
-
 #resultsTable {
     margin: 0 auto;
     /* Center-align the table */
@@ -242,9 +162,6 @@ button:hover {
     border-spacing: 35px;
     /* Adjust the spacing value as needed */
 }
-
-
-
 
 .image-container {
     position: absolute;
@@ -259,9 +176,6 @@ button:hover {
     max-width: 250px;
     /* Adjust the maximum width of the image */
 }
-
-
-
 
 .overlay {
     display: none;
@@ -286,30 +200,32 @@ button:hover {
     max-height: 100%;
 }
 
-
 .large-title {
     font-size: 30px;
 
 }
 
-
 /* Style for the "Points" element */
 #userPoints {
     position: absolute;
     top: 100px;
-    right: 100px; /* Adjust the right position as needed */
-    font-family: cursive; /* Use the same font as the page */
-    color: inherit; /* Use the same text color as the page */
-    font-size: inherit; /* Use the same font size as the page */
+    right: 100px;
+    /* Adjust the right position as needed */
+    font-family: cursive;
+    /* Use the same font as the page */
+    color: inherit;
+    /* Use the same text color as the page */
+    font-size: inherit;
+    /* Use the same font size as the page */
 }
 
-
 .background {
-    /*background-image: url('lose.png'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100vh; /* Make it cover the entire viewport height */
-    opacity: 0.8; /* Adjust the transparency as needed */
+    height: 100vh;
+    /* Make it cover the entire viewport height */
+    opacity: 0.8;
+    /* Adjust the transparency as needed */
     position: relative;
 }

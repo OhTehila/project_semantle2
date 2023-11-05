@@ -19,11 +19,11 @@
     <h1>See you tomorrow</h1>
     <div id="userPoints">your points:
         <p> <span id="userPoints">Loading...</span></p>
-      
+
     </div>
 
     <script>
-        // Your web app's Firebase configuration    
+        // web app's Firebase configuration    
         const firebaseConfig = {
             apiKey: "AIzaSyBS6ftMzXuNYUVmBDytMQyV1nDfwiAIUG8",
             authDomain: "semantle-9c71d.firebaseapp.com",
@@ -39,21 +39,19 @@
         const params = new URLSearchParams(window.location.search);
         const time = params.get('time');
         if (time !== null) {
-            // אם נמצא הפרמטר time ב-URL, הצג את הזמן        
-            // document.getElementById('userPoints').textContent = `Your Time: ${time} seconds \n Your Points: Loading...`;       
+            // If the time parameter is found in the URL, display the time       
             const userPointsDiv = document.getElementById('userPoints');
             userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: Loading...</div>`;
-            // הוסף את הקוד הבא כדי לטעון את נקודות המשתמש מ-Firebase      
+            // to load the user points from Firebase     
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
-                    // המשתמש מחובר              
-                    console.log('המשתמש מחובר:', user);
+                    // User is logged in             
+                    console.log('User is logged in', user);
                     const uid = user.uid;
                     const userRef = firebase.database().ref(`users/${uid}/points`);
                     userRef.once('value', (snapshot) => {
                         const userPoints = snapshot.val();
                         if (userPoints !== undefined) {
-                            //  document.getElementById('userPoints').textContent = `Your Time: ${time} seconds \n Your Points: ${userPoints}`;         
                             const userPointsDiv = document.getElementById('userPoints');
                             userPointsDiv.innerHTML = `<div>Your Time: ${time} seconds</div><div>Your Points: ${userPoints}</div>`;
                         } else {
@@ -62,17 +60,17 @@
                         }
                     });
                 } else {
-                    // המשתמש לא מחובר           
-                    console.log('המשתמש לא מחובר');
+                    // The user is not logged in        
+                    console.log('The user is not logged in');
                     console.error('User not authenticated.');
                     document.getElementById('userPoints').textContent = 'Error: User not authenticated';
                 }
             });
         } else {
-
-            // אם לא נמצא הפרמטר time, הצג הודעת שגיאה         
+            // If the time parameter is not found, display an error message        
             document.getElementById('userPoints').textContent = 'Error: Time not found';
         }
     </script>
 </body>
+
 </html>

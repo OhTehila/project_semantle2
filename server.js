@@ -1,4 +1,3 @@
-
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios');
@@ -25,7 +24,6 @@ for (const line of vectorsLines) {
     }
 }
 
-
 function calculateCosineSimilarity(vectorA, vectorB) {
     // Implement cosine similarity calculation here
     if (vectorA.length !== vectorB.length) {
@@ -42,7 +40,6 @@ function calculateCosineSimilarity(vectorA, vectorB) {
 
     return dotProduct / (magnitudeA * magnitudeB);
 }
-
 
 function preprocessWord(word) {
     // Convert to lowercase and remove punctuation
@@ -76,23 +73,8 @@ function calculateSemanticDistance(userWord, targetWord) {
     }
 }
 
-
-
-
-
 let correctWord;
-/*
-function getRandomWord() {
-    fetch('https://random-word-api.herokuapp.com/word?number=1')
-        .then(response => response.json())
-        .then(data => {
-            correctWord = data[0];
-            console.log('Random word:', correctWord);//
-        })
-        .catch(error => {
-            console.error('Error fetching random word:', error);
-        });
-}*/
+
 function getRandomWord() {
     const getRandomWordFromApi = () => {
         return fetch('https://random-word-api.herokuapp.com/word?number=1')
@@ -132,7 +114,7 @@ function getRandomWord() {
 function scheduleRandomWord() {
     const now = new Date();
     const targetTime = new Date(now);
-    targetTime.setHours(0, 0, 0, 0); // Set target time to 00:00
+    targetTime.setHours(10, 18, 0, 0); // Set target time to 00:00
     if (targetTime <= now) {
         targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
     }
@@ -148,41 +130,11 @@ function scheduleRandomWord() {
 // Start scheduling the function
 scheduleRandomWord();
 
-
-
-
-/******** */
-/*
 app.post('/check-word', (req, res) => {
     const { word } = req.body;
-    //const correctWord = 'dog';
-   // const isCorrect = word.toLowerCase() === correctWord;
     const score = calculateSemanticDistance(word, correctWord);
-    console.log('Score:', score);
-
-      res.json(score);
-
-});
-*/
-app.post('/check-word', (req, res) => {
-    const { word } = req.body;
-    //const correctWord = 'dog';
-    const score = calculateSemanticDistance(word, correctWord);
-/*
-    if (score === 100) {
-        const overlay = document.getElementById('overlay');
-        overlay.style.display = 'block';
-
-        // Hide the overlay after a certain delay (e.g., 5 seconds)
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 5000); // 5000 milliseconds = 5 seconds
-    }*/
-
     res.json(score);
 });
-
-
 
 port = 3000
 my_port = process.env.PORT || port
