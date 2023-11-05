@@ -77,7 +77,7 @@ let correctWord;
 
 function getRandomWord() {
     const getRandomWordFromApi = () => {
-        return fetch('https://random-word-api.herokuapp.com/word?number=1')
+        return axios.get('https://random-word-api.herokuapp.com/word?number=1')///שינוי
             .then(response => response.json())
             .then(data => {
                 const randomWord = data[0];
@@ -128,7 +128,7 @@ function scheduleRandomWord() {
 }
 
 // Start scheduling the function
-getRandomWord();////////זה
+getRandomWord();////////שינוי
 scheduleRandomWord();
 
 app.post('/check-word', (req, res) => {
