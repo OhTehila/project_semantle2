@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ word: guessedWord })
             });
-            const data = await response.data[0];//.json();
+            const data = await response.json();//.data[0]
 
             const user = firebase.auth().currentUser;
             console.log('user:', user);
